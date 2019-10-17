@@ -1,5 +1,5 @@
 {
-    "name": "Untitled",
+    "name": "dfrobot_maqueenpluss",
     "dependencies": {
         "core": "*",
         "radio": "*"
@@ -14,5 +14,6 @@
     "preferredEditor": "tsprj",
     "testFiles": [
         "test.ts"
-    ]
+    ],
+    "installedVersion": "workspace:52d9183a-9949-4a3f-e14f-62c59bbf7673"
 }
