@@ -6,7 +6,9 @@ enum Motors {
     //% block="M1"
     M1 = 1,
     //% block="M2"
-    M2 = 1
+    M2 = 1,
+    //% block="ALL"
+    ALL = 0
 }
 
 /**
@@ -97,7 +99,18 @@ namespace DFRobotMaqueenPluss{
      * 寻线传感器
      */
     //%block="read patrol|%patrol"
-    export function ReadPatrol(patrol: Patrol) {
-        
+    export function ReadPatrol(patrol: Patrol): number {
+        return 0
     }
+    /**
+     * 读版本号
+     */
+    //%block="get product information"
+    export function ReadVersion(): number {
+        return 0
+    }
+    /**
+     * 超声波
+     */
+    
 }
