@@ -11,7 +11,7 @@
         "README.md",
         "maqueenplus.ts"
     ],
-    "preferredEditor": "tsprj",
+    "preferredEditor": "blocksprj",
     "testFiles": [
         "test.ts"
     ],
