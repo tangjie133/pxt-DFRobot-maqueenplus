@@ -1,4 +1,4 @@
-// Add your code here
+
 /**
     * 电机
     */
@@ -36,7 +36,7 @@ enum Servos {
 /**
  * RGB灯
  */
-enum RGBLight{
+enum RGBLight {
     //%block="RGBLightL"
     RGBL = 0,
     //%block="RGBLightR"
@@ -47,7 +47,7 @@ enum RGBLight{
 /**
  * 寻线传感器
  */
-enum Patrol{
+enum Patrol {
     //% block="patrolLeft1"
     L1 = 0,
     //%block="patrolLeft2"
@@ -59,23 +59,23 @@ enum Patrol{
 }
 
 //% weight=100  color=#00A654   block="Maqueenpluss"
-namespace DFRobotMaqueenPluss{
-   
+namespace DFRobotMaqueenPluss {
+
     /**
      * 控制电机运行
      */
     //% block="Motor|%index|dir|%direction|speed|%speed"
     //% speed.min=0 speed.max=255
-    
-    export function MototRun(index: Motors,direction: Dir,speed: number): void{
+
+    export function MototRun(index: Motors, direction: Dir, speed: number): void {
     }
 
     /**
      * 控制电机停止
      */
     //% block="Motor stop|%mostors"
-    export function MostotStop(mostor:Motors): void {
-        
+    export function MostotStop(mostor: Motors): void {
+
     }
 
     /**
@@ -83,8 +83,8 @@ namespace DFRobotMaqueenPluss{
      */
     //% block="servo|%index|angle|%angle"
     //% angle.min=0  angle.max=180
-    export function ServoRun(index: Servos,angle: number):void {
-        
+    export function ServoRun(index: Servos, angle: number): void {
+
     }
 
     /**
@@ -92,7 +92,7 @@ namespace DFRobotMaqueenPluss{
      */
     //%block="setRGBlight|%light"
     export function SetRGBLight(light: RGBLight): void {
-        
+
     }
 
     /**
@@ -112,5 +112,5 @@ namespace DFRobotMaqueenPluss{
     /**
      * 超声波
      */
-    
+
 }

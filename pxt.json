@@ -1,5 +1,5 @@
 {
-    "name": "dfrobot_maqueenpluss",
+    "name": "Maqueenpluss",
     "dependencies": {
         "core": "*",
         "radio": "*"
@@ -11,7 +11,7 @@
         "README.md",
         "maqueenplus.ts"
     ],
-    "preferredEditor": "blocksprj",
+    "preferredEditor": "tsprj",
     "testFiles": [
         "test.ts"
     ],
