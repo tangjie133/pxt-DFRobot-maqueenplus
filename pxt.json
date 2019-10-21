@@ -9,7 +9,8 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "maqueenplus.ts"
+        "maqueenplus.ts",
+        "pin.cpp"
     ],
     "preferredEditor": "tsprj",
     "testFiles": [
