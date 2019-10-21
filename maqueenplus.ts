@@ -37,9 +37,9 @@ enum Servos {
  * RGB灯
  */
 enum RGBLight {
-    //%block="RGBLightL"
+    //%block="RGB_L"
     RGBL = 0,
-    //%block="RGBLightR"
+    //%block="RGB_R"
     RGBR = 0,
 
 }
@@ -48,17 +48,30 @@ enum RGBLight {
  * 寻线传感器
  */
 enum Patrol {
-    //% block="patrolLeft1"
+    //% block="Line_L1"
     L1 = 0,
-    //%block="patrolLeft2"
+    //%block="Line_L2"
     L2 = 0,
-    //%block="patrolRight1"
+    //%block="Line_R1"
     R1 = 0,
-    //%block="patrolRight2"
+    //%block="Line_R2"
     R2 = 0
 }
+/**
+ * 超声波单位
+ */
+enum Sonicunit{
+    //% block="cm"
+    Centimeters,
+    //% block="μs"
+    MicroSeconds
+}
+/**
+ * 定义引脚
+ */
 
-//% weight=100  color=#00A654   block="Maqueenpluss"
+
+//% weight=100  color=#00A654   block="Maqueen+"
 namespace DFRobotMaqueenPluss {
 
     /**
@@ -83,6 +96,7 @@ namespace DFRobotMaqueenPluss {
      */
     //% block="servo|%index|angle|%angle"
     //% angle.min=0  angle.max=180
+   
     export function ServoRun(index: Servos, angle: number): void {
 
     }
@@ -90,7 +104,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * RGB灯
      */
-    //%block="setRGBlight|%light"
+    //%block="set RGB light|%light"
     export function SetRGBLight(light: RGBLight): void {
 
     }
@@ -112,5 +126,8 @@ namespace DFRobotMaqueenPluss {
     /**
      * 超声波
      */
-
+    //%block="ultrasonic|%sonic|%S"
+    export function UltraSonic(sonic: Sonicunit, S: DigitalPin):number {
+        return 0
+    }
 }
