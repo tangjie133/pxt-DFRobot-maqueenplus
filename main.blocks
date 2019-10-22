@@ -1,1 +1,1 @@
-<xml xmlns="https://developers.google.com/blockly/xml"><block type="device_forever" id="/W+%6ZTPXWSU%YnW?M-f" x="0" y="0"><statement name="HANDLER"><block type="DFRobotMaqueenPluss_SetRGBLight" id="Rcuz|7)va_V{H!D6q!Mb"><field name="light">RGBLight.RGBL</field></block></statement></block></xml>
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="device_forever" id="o9i2r;2u]Y@0~FjYP@g!" x="20" y="20"/></xml>

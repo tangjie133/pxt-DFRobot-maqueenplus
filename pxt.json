@@ -9,12 +9,11 @@
         "main.blocks",
         "main.ts",
         "README.md",
-        "maqueenplus.ts",
-        "pin.cpp"
+        "maqueenplus.ts"
     ],
     "preferredEditor": "tsprj",
     "testFiles": [
         "test.ts"
     ],
-    "installedVersion": "workspace:52d9183a-9949-4a3f-e14f-62c59bbf7673"
+    "installedVersion": "workspace:c1b6a917-fa65-42ee-d6cf-07944d1def52"
 }
