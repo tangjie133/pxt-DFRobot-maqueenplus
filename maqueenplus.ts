@@ -271,13 +271,15 @@ namespace DFRobotMaqueenPluss {
      * 读版本号
      */
     //%block="get product information"
-    export function ReadVersion(): number{
+    export function ReadVersion(): string{
         pins.i2cWriteNumber(0x10, 0x28, NumberFormat.Int8LE)
         let v = pins.i2cReadNumber(0x10, NumberFormat.Int8LE)
         pins.i2cWriteNumber(0x10, 0x29, NumberFormat.Int8LE)
         let  y = pins.i2cReadBuffer(0x10, v);
-        serial.writeBuffer(y)
-        return 0
+        //serial.writeBuffer(y)
+        //let num = y.getNumber(NumberFormat.Int8LE, 11)
+        let x = y.toString()
+        return x
     }
     /**
      * 超声波
