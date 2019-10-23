@@ -1,4 +1,4 @@
-/**
+    /**
     * 电机
     */
 enum Motors {
@@ -296,7 +296,7 @@ namespace DFRobotMaqueenPluss {
         }
     }
     /**
-     * 紅外
+     * 紅外 infra-red sensor
      */
-    //%block=""
+    //%block="reade IR"
 }
