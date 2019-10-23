@@ -130,16 +130,16 @@ namespace DFRobotMaqueenPluss {
             buf[0] = 0x00;
             buf[1] = direction;
             buf[2] = speed;
-            buf[3] = 0x03;
+            buf[3] = direction;
             buf[4] = 0;
             pins.i2cWriteBuffer(0x10, buf)
 
         } else if (index == 2) {
-            buf[0] = 0x02;
+            buf[0] = 0x00;
             buf[1] = direction;
-            buf[2] = speed;
-            buf[3] = 0x01;
-            buf[4] = 0;
+            buf[2] = 0;
+            buf[3] = direction;
+            buf[4] = speed;
             pins.i2cWriteBuffer(0x10, buf)
         } else if (index == 3) {
             buf[0] = 0x00;
