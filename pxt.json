@@ -16,7 +16,8 @@
         "ReceiverIR.h",
         "RemoteIR.h",
         "TransmitterIR.cpp",
-        "TransmitterIR.h"
+        "TransmitterIR.h",
+		"shims.d.ts"
     ],
     "preferredEditor": "tsprj",
     "testFiles": [
