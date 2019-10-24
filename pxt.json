@@ -16,7 +16,7 @@
         "ReceiverIR.h",
         "RemoteIR.h",
         "TransmitterIR.cpp",
-        "TransmitterIR.h",
+        "TransmitterIR.h"
     ],
     "preferredEditor": "tsprj",
     "testFiles": [
