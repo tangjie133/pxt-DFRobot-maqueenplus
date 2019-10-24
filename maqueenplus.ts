@@ -1,3 +1,8 @@
+let maqueene = "1"
+let maqueenparam = 0
+let alreadyInit = 0
+let IrPressEvent = 0
+let maqueencb: Action
     /**
     * 电机
     */
@@ -109,6 +114,12 @@ enum Color {
 
 //% weight=100  color=#00A654   block="Maqueen+"
 namespace DFRobotMaqueenPluss {
+
+    export class Packeta {
+        public mye: string;
+        public myparam: number;
+    }
+
     /**
      * 开启PID
      */
@@ -347,8 +358,6 @@ namespace DFRobotMaqueenPluss {
     }
 
 
-    //% weight=100
-    //% blockGap=50
     //% blockId=IR_callbackUser block="on IR received"
     export function IR_callbackUser(maqueencb: (message: number) => void) {
         maqueenInit();
@@ -361,7 +370,7 @@ namespace DFRobotMaqueenPluss {
         });
     }
 
-    //% weight=10
+  
     //% blockId=IR_read block="read IR"
     export function IR_read(): number {
         maqueenInit()
