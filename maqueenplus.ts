@@ -326,4 +326,9 @@ namespace DFRobotMaqueenPluss {
      * 紅外 infra-red sensor
      */
     //%block="reade IR"
+    export function ReadeIR(): number {
+
+
+        return  0
+    }
 }
