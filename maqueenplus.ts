@@ -4,7 +4,7 @@ let alreadyInit = 0
 let IrPressEvent = 0
 let maqueencb: Action
 
-enum  PIN {
+enum PIN {
     P0 = 3,
     P1 = 2,
     P2 = 1,
@@ -15,9 +15,9 @@ enum  PIN {
     P14 = 22,
     P15 = 21,
 };
-    /**
-    * 电机
-    */
+/**
+* 电机
+*/
 enum Motors {
     //% block="M1"
     M1 = 1,
@@ -190,7 +190,7 @@ namespace DFRobotMaqueenPluss {
             buf[0] = 0x09;
             buf[1] = speed;
             pins.i2cWriteBuffer(0x10, buf)
-        } 
+        }
     }
     /**
      * 读电机转速
@@ -236,7 +236,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * RGB灯
      */
-    //% block="|%rgbshow color|%color"
+    //% block="set |%rgbshow color|%color"
     export function SetRGBLight(rgb: RGBLight, color: Color): void {
         let buf = pins.createBuffer(3)
         if (rgb == 1) {
@@ -285,7 +285,7 @@ namespace DFRobotMaqueenPluss {
      * 读取巡线传感器电压
      */
     //% block="read patrol|%patrol voltage "
-    export function ReadPatrolVoltage(patrol: Patrol):number {
+    export function ReadPatrolVoltage(patrol: Patrol): number {
         let x
         if (patrol == 1) {
             pins.i2cWriteNumber(0x10, 0x1E, NumberFormat.UInt8LE)
@@ -305,18 +305,18 @@ namespace DFRobotMaqueenPluss {
             return x
         }
         return -1
-        
+
 
     }
     /**
      * 读版本号
      */
     //%block="get product information"
-    export function ReadVersion(): string{
+    export function ReadVersion(): string {
         pins.i2cWriteNumber(0x10, 0x28, NumberFormat.Int8LE)
         let v = pins.i2cReadNumber(0x10, NumberFormat.Int8LE)
         pins.i2cWriteNumber(0x10, 0x29, NumberFormat.Int8LE)
-        let  y = pins.i2cReadBuffer(0x10, v);
+        let y = pins.i2cReadBuffer(0x10, v);
         let x = y.toString()
         return x
     }
@@ -328,7 +328,7 @@ namespace DFRobotMaqueenPluss {
         let maxCmDistance = 500;
         let _T;
         let _E;
-        switch(T){
+        switch (T) {
             case PIN.P0: _T = DigitalPin.P0; break;
             case PIN.P1: _T = DigitalPin.P1; break;
             case PIN.P2: _T = DigitalPin.P2; break;
@@ -340,7 +340,7 @@ namespace DFRobotMaqueenPluss {
             case PIN.P15: _T = DigitalPin.P15; break;
             default: _T = DigitalPin.P0; break;
         }
-        
+
         switch (E) {
             case PIN.P0: _E = DigitalPin.P0; break;
             case PIN.P1: _E = DigitalPin.P1; break;
@@ -375,7 +375,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 紅外 infra-red sensor
      */
-     //% advanced=true shim=maqueenIR::initIR
+    //% advanced=true shim=maqueenIR::initIR
     function initIR(pin: Pins): void {
         return
     }
@@ -397,7 +397,7 @@ namespace DFRobotMaqueenPluss {
     }
 
 
-    //% blockId=IR_callbackUser block="on IR received"
+    //%  block="on IR received"
     export function IR_callbackUser(maqueencb: (message: number) => void) {
         maqueenInit();
         IR_callback(() => {
@@ -409,14 +409,14 @@ namespace DFRobotMaqueenPluss {
         });
     }
 
-  
-    //% blockId=IR_read block="read IR"
+
+    //%  block="read IR"
     export function IR_read(): number {
         maqueenInit()
         return getParam()
     }
-	
-	function IR_callback(a: Action): void {
+
+    function IR_callback(a: Action): void {
         maqueencb = a
         IrPressEvent += 1
         onPressEvent(IrPressEvent, maqueencb)
