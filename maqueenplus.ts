@@ -213,7 +213,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * RGB灯
      */
-    //% block="|%rgbshow color|%color"
+    //% block="set|%rgbshow color|%color"
     export function SetRGBLight(rgb: RGBLight, color: Color): void {
         let buf = pins.createBuffer(3)
         if (rgb == 1) {
