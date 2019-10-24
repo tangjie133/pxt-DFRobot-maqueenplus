@@ -155,15 +155,15 @@ namespace DFRobotMaqueenPluss {
     /**
      * 电机补偿
      */
-    //% block="Motor Compensation|%mostor speed|%speed"
+    //% block="Motor Compensation|%motor speed|%speed"
     //% speed.min=0 speed.max=255
-    export function MostotCompensation(mostor: Motors1, speed: number): void {
+    export function MostotCompensation(motor: Motors1, speed: number): void {
         let buf = pins.createBuffer(2)
-        if (mostor == 1) {
+        if (motor == 1) {
             buf[0] = 0x08;
             buf[1] = speed;
             pins.i2cWriteBuffer(0x10, buf)
-        } else if (mostor == 2) {
+        } else if (motor == 2) {
             buf[0] = 0x09;
             buf[1] = speed;
             pins.i2cWriteBuffer(0x10, buf)
@@ -172,7 +172,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 读电机转速
      */
-    //%block="read mostor|%index speed"
+    //%block="read Motor|%index speed"
     export function ReadSpeed(index: Motors1): number {
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
         let x = pins.i2cReadBuffer(0x10, 4)
