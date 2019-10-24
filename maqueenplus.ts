@@ -122,7 +122,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 控制电机运行
      */
-    //% block="motor|%index|dir|%direction|speed|%speed "
+    //% block="Motor|%index|dir|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function MototRun(index: Motors, direction: Dir, speed: number): void {
         let buf = pins.createBuffer(5)
@@ -155,7 +155,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 电机补偿
      */
-    //% block="motor Compensation|%motor speed|%speed"
+    //% block="Motor Compensation|%motor speed|%speed"
     //% speed.min=0 speed.max=255
     export function MostotCompensation(motor: Motors1, speed: number): void {
         let buf = pins.createBuffer(2)
@@ -172,7 +172,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 读电机转速
      */
-    //%block="read motor|%index speed"
+    //%block="read Motor|%index speed"
     export function ReadSpeed(index: Motors1): number {
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
         let x = pins.i2cReadBuffer(0x10, 4)
@@ -213,7 +213,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * RGB灯
      */
-    //% block="set|%rgbshow color|%color"
+    //% block="|%rgbshow color|%color"
     export function SetRGBLight(rgb: RGBLight, color: Color): void {
         let buf = pins.createBuffer(3)
         if (rgb == 1) {
@@ -325,10 +325,52 @@ namespace DFRobotMaqueenPluss {
     /**
      * 紅外 infra-red sensor
      */
-    //%block="reade IR"
-    export function ReadeIR(): number {
+     //% advanced=true shim=maqueenIR::initIR
+    function initIR(pin: Pins): void {
+        return
+    }
+    //% advanced=true shim=maqueenIR::onPressEvent
+    function onPressEvent(btn: RemoteButton, body: Action): void {
+        return
+    }
+    //% advanced=true shim=maqueenIR::getParam
+    function getParam(): number {
+        return 0
+    }
+
+    function maqueenInit(): void {
+        if (alreadyInit == 1) {
+            return
+        }
+        initIR(Pins.P16)
+        alreadyInit = 1
+    }
 
 
-        return  0
+    //% weight=100
+    //% blockGap=50
+    //% blockId=IR_callbackUser block="on IR received"
+    export function IR_callbackUser(maqueencb: (message: number) => void) {
+        maqueenInit();
+        IR_callback(() => {
+            const packet = new Packeta();
+            packet.mye = maqueene;
+            maqueenparam = getParam();
+            packet.myparam = maqueenparam;
+            maqueencb(packet.myparam);
+        });
+    }
+
+    //% weight=10
+    //% blockId=IR_read block="read IR"
+    export function IR_read(): number {
+        maqueenInit()
+        return getParam()
+    }
+	
+	function IR_callback(a: Action): void {
+        maqueencb = a
+        IrPressEvent += 1
+        onPressEvent(IrPressEvent, maqueencb)
     }
 }
