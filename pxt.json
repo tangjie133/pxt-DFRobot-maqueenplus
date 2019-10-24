@@ -15,13 +15,11 @@
         "ReceiverIR.cpp",
         "ReceiverIR.h",
         "RemoteIR.h",
-        "TransmitterIR.cpp",
-        "TransmitterIR.h",
         "shims.d.ts"
     ],
     "preferredEditor": "tsprj",
     "testFiles": [
         "test.ts"
     ],
-    "installedVersion": "workspace:c1b6a917-fa65-42ee-d6cf-07944d1def52"
+    "installedVersion": "workspace:0b466c08-16dc-4a03-3c41-1b8f1e15e69a"
 }

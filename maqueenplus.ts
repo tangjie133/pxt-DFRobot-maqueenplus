@@ -3,6 +3,18 @@ let maqueenparam = 0
 let alreadyInit = 0
 let IrPressEvent = 0
 let maqueencb: Action
+
+enum  PIN {
+    P0 = 3,
+    P1 = 2,
+    P2 = 1,
+    P8 = 18,
+    P9 = 10,
+    P10 = 6,
+    P13 = 23,
+    P14 = 22,
+    P15 = 21,
+};
     /**
     * 电机
     */
@@ -312,17 +324,44 @@ namespace DFRobotMaqueenPluss {
      * 超声波
      */
     //%block="ultrasonic T|%T E|%E |%sonic"
-    export function UltraSonic(T: DigitalPin, E: DigitalPin, sonic: Sonicunit): number {
+    export function UltraSonic(T: PIN, E: PIN, sonic: Sonicunit): number {
         let maxCmDistance = 500;
-        pins.setPull(T, PinPullMode.PullNone);
-        pins.digitalWritePin(T, 0);
+        let _T;
+        let _E;
+        switch(T){
+            case PIN.P0: _T = DigitalPin.P0; break;
+            case PIN.P1: _T = DigitalPin.P1; break;
+            case PIN.P2: _T = DigitalPin.P2; break;
+            case PIN.P8: _T = DigitalPin.P8; break;
+            case PIN.P9: _T = DigitalPin.P9; break;
+            case PIN.P10: _T = DigitalPin.P10; break;
+            case PIN.P13: _T = DigitalPin.P13; break;
+            case PIN.P14: _T = DigitalPin.P14; break;
+            case PIN.P15: _T = DigitalPin.P15; break;
+            default: _T = DigitalPin.P0; break;
+        }
+        
+        switch (E) {
+            case PIN.P0: _E = DigitalPin.P0; break;
+            case PIN.P1: _E = DigitalPin.P1; break;
+            case PIN.P2: _E = DigitalPin.P2; break;
+            case PIN.P8: _E = DigitalPin.P8; break;
+            case PIN.P9: _E = DigitalPin.P9; break;
+            case PIN.P10: _E = DigitalPin.P10; break;
+            case PIN.P13: _E = DigitalPin.P13; break;
+            case PIN.P14: _E = DigitalPin.P14; break;
+            case PIN.P15: _E = DigitalPin.P15; break;
+            default: _E = DigitalPin.P0; break;
+        }
+        pins.setPull(_T, PinPullMode.PullNone);
+        pins.digitalWritePin(_T, 0);
         control.waitMicros(2);
-        pins.digitalWritePin(T, 1);
+        pins.digitalWritePin(_T, 1);
         control.waitMicros(10);
-        pins.digitalWritePin(T, 0);
+        pins.digitalWritePin(_T, 0);
 
-        pins.setPull(E, PinPullMode.PullUp);
-        let d = pins.pulseIn(E, PulseValue.High, maxCmDistance * 42);
+        pins.setPull(_E, PinPullMode.PullUp);
+        let d = pins.pulseIn(_E, PulseValue.High, maxCmDistance * 42);
         console.log("DISTANCE:" + d / 42);
         basic.pause(50);
         let x = Math.round(d / 42);

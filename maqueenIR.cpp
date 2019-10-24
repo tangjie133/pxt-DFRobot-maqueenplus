@@ -5,8 +5,6 @@
 using namespace pxt;
 typedef vector<Action> vA;
 
-
-
 enum class Pins{
   P0=  3,
   P1=  2,
@@ -69,6 +67,7 @@ namespace maqueenIR {
   /**
   * button pushed.
   */
+
   //% blockId=ir_received_left_event
   //% block="on |%btn| button pressed"
   void onPressEvent(RemoteButton btn, Action body) {
