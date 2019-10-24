@@ -122,7 +122,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 控制电机运行
      */
-    //% block="Motor|%index|dir|%direction|speed|%speed "
+    //% block="motor|%index|dir|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function MototRun(index: Motors, direction: Dir, speed: number): void {
         let buf = pins.createBuffer(5)
@@ -155,7 +155,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 电机补偿
      */
-    //% block="Motor Compensation|%motor speed|%speed"
+    //% block="motor Compensation|%motor speed|%speed"
     //% speed.min=0 speed.max=255
     export function MostotCompensation(motor: Motors1, speed: number): void {
         let buf = pins.createBuffer(2)
@@ -172,7 +172,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 读电机转速
      */
-    //%block="read Motor|%index speed"
+    //%block="read motor|%index speed"
     export function ReadSpeed(index: Motors1): number {
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
         let x = pins.i2cReadBuffer(0x10, 4)
