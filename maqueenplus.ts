@@ -259,6 +259,33 @@ namespace DFRobotMaqueenPluss {
         return -1
     }
     /**
+     * 读取巡线传感器电压
+     */
+    //% block="read patrol|%patrol voltage "
+    export function ReadPatrolVoltage(patrol: Patrol):number {
+        let x
+        if (patrol == 1) {
+            pins.i2cWriteNumber(0x10, 0x1E, NumberFormat.UInt8LE)
+            x = pins.i2cReadNumber(0x10, NumberFormat.UInt8LE)
+            return x
+        } else if (patrol == 2) {
+            pins.i2cWriteNumber(0x10, 0x1F, NumberFormat.UInt8LE)
+            x = pins.i2cReadNumber(0x10, NumberFormat.UInt8LE)
+            return x
+        } else if (patrol == 3) {
+            pins.i2cWriteNumber(0x10, 0x20, NumberFormat.UInt8LE)
+            x = pins.i2cReadNumber(0x10, NumberFormat.UInt8LE)
+            return x
+        } else if (patrol == 4) {
+            pins.i2cWriteNumber(0x10, 0x21, NumberFormat.UInt8LE)
+            x = pins.i2cReadNumber(0x10, NumberFormat.UInt8LE)
+            return x
+        }
+        return -1
+        
+
+    }
+    /**
      * 读版本号
      */
     //%block="get product information"
@@ -275,7 +302,7 @@ namespace DFRobotMaqueenPluss {
      */
     //%block="ultrasonic T|%T E|%E |%sonic"
     export function UltraSonic(T: DigitalPin, E: DigitalPin, sonic: Sonicunit): number {
-        let maxCmDistance = 500
+        let maxCmDistance = 500;
         pins.setPull(T, PinPullMode.PullNone);
         pins.digitalWritePin(T, 0);
         control.waitMicros(2);
