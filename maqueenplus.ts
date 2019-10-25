@@ -258,9 +258,8 @@ namespace DFRobotMaqueenPluss {
      */
     //%block="read patrol|%patrol"
     export function ReadPatrol(patrol: Patrol): number {
-        let x
         pins.i2cWriteNumber(0x10, 0x19, NumberFormat.Int8LE);
-        let y= pins.i2cReadBuffer(0x10,4);
+        let y = pins.i2cReadBuffer(0x10, 4);
         if (patrol == 1) {
             return y[1]
         } else if (patrol == 2) {
@@ -272,6 +271,7 @@ namespace DFRobotMaqueenPluss {
         }
         return -1
     }
+
     /**
      * 读取巡线传感器电压
      */
