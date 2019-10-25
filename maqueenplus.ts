@@ -148,8 +148,8 @@ namespace DFRobotMaqueenPluss {
     //% block="Motor|%index|dir|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function MototRun(index: Motors, direction: Dir, speed: number): void {
-        let buf = pins.createBuffer(3)
-        let buf1 = pins.createBuffer(5)
+        let buf = pins.createBuffer(5)
+        //let buf1 = pins.createBuffer(5)
         if (index == 1) {
             buf[0] = 0x00;
             buf[1] = direction;
@@ -157,16 +157,16 @@ namespace DFRobotMaqueenPluss {
             pins.i2cWriteBuffer(0x10, buf)
 
         } else if (index == 2) {
-            buf[0] = 0x00;
+            buf[0] = 0x02;
             buf[1] = direction;
-            buf[2] = 0;
+            buf[2] = speed;
             pins.i2cWriteBuffer(0x10, buf)
         } else if (index == 3) {
-            buf1[0] = 0x00;
-            buf1[1] = direction;
-            buf1[2] = speed;
-            buf1[3] = direction;
-            buf1[4] = speed;
+            buf[0] = 0x00;
+            buf[1] = direction;
+            buf[2] = speed;
+            buf[3] = direction;
+            buf[4] = speed;
             pins.i2cWriteBuffer(0x10, buf)
         }
 
@@ -259,22 +259,16 @@ namespace DFRobotMaqueenPluss {
     //%block="read patrol|%patrol"
     export function ReadPatrol(patrol: Patrol): number {
         let x
+        pins.i2cWriteNumber(0x10, 0x19, NumberFormat.Int8LE);
+        let y= pins.i2cReadBuffer(0x10,4);
         if (patrol == 1) {
-            pins.i2cWriteNumber(0x10, 0x1A, NumberFormat.Int8LE)
-            x = pins.i2cReadNumber(0x10, NumberFormat.Int8LE)
-            return x
+            return y[1]
         } else if (patrol == 2) {
-            pins.i2cWriteNumber(0x10, 0x19, NumberFormat.Int8LE)
-            x = pins.i2cReadNumber(0x10, NumberFormat.Int8LE)
-            return x
+            return y[0]
         } else if (patrol == 3) {
-            pins.i2cWriteNumber(0x10, 0x1B, NumberFormat.Int8LE)
-            x = pins.i2cReadNumber(0x10, NumberFormat.Int8LE)
-            return x
+            return y[2]
         } else if (patrol == 4) {
-            pins.i2cWriteNumber(0x10, 0x1C, NumberFormat.Int8LE)
-            x = pins.i2cReadNumber(0x10, NumberFormat.Int8LE)
-            return x
+            return y[3]
         }
         return -1
     }
@@ -283,27 +277,18 @@ namespace DFRobotMaqueenPluss {
      */
     //% block="read patrol|%patrol voltage "
     export function ReadPatrolVoltage(patrol: Patrol): number {
-        let x
+        pins.i2cWriteNumber(0x10, 0x1E, NumberFormat.Int8LE);
+        let y = pins.i2cReadBuffer(0x10, 4);
         if (patrol == 1) {
-            pins.i2cWriteNumber(0x10, 0x1E, NumberFormat.UInt8LE)
-            x = pins.i2cReadNumber(0x10, NumberFormat.UInt8LE)
-            return x
+            return y[1]
         } else if (patrol == 2) {
-            pins.i2cWriteNumber(0x10, 0x1F, NumberFormat.UInt8LE)
-            x = pins.i2cReadNumber(0x10, NumberFormat.UInt8LE)
-            return x
+            return y[0]
         } else if (patrol == 3) {
-            pins.i2cWriteNumber(0x10, 0x20, NumberFormat.UInt8LE)
-            x = pins.i2cReadNumber(0x10, NumberFormat.UInt8LE)
-            return x
+            return y[2]
         } else if (patrol == 4) {
-            pins.i2cWriteNumber(0x10, 0x21, NumberFormat.UInt8LE)
-            x = pins.i2cReadNumber(0x10, NumberFormat.UInt8LE)
-            return x
+            return y[3]
         }
         return -1
-
-
     }
     /**
      * 读版本号
