@@ -148,28 +148,25 @@ namespace DFRobotMaqueenPluss {
     //% block="Motor|%index|dir|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function MototRun(index: Motors, direction: Dir, speed: number): void {
-        let buf = pins.createBuffer(5)
+        let buf = pins.createBuffer(3)
+        let buf1 = pins.createBuffer(5)
         if (index == 1) {
             buf[0] = 0x00;
             buf[1] = direction;
             buf[2] = speed;
-            buf[3] = direction;
-            buf[4] = 0;
             pins.i2cWriteBuffer(0x10, buf)
 
         } else if (index == 2) {
             buf[0] = 0x00;
             buf[1] = direction;
             buf[2] = 0;
-            buf[3] = direction;
-            buf[4] = speed;
             pins.i2cWriteBuffer(0x10, buf)
         } else if (index == 3) {
-            buf[0] = 0x00;
-            buf[1] = direction;
-            buf[2] = speed;
-            buf[3] = direction;
-            buf[4] = speed;
+            buf1[0] = 0x00;
+            buf1[1] = direction;
+            buf1[2] = speed;
+            buf1[3] = direction;
+            buf1[4] = speed;
             pins.i2cWriteBuffer(0x10, buf)
         }
 
