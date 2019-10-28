@@ -148,20 +148,28 @@ namespace DFRobotMaqueenPluss {
     //% block="Motor|%index|dir|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function MototRun(index: Motors, direction: Dir, speed: number): void {
-        let buf = pins.createBuffer(5)
+       
         //let buf1 = pins.createBuffer(5)
         if (index == 1) {
+            let buf = pins.createBuffer(3)
             buf[0] = 0x00;
             buf[1] = direction;
             buf[2] = speed;
+            // buf[3] = 0;
+            // buf[4] = 0;
             pins.i2cWriteBuffer(0x10, buf)
 
-        } else if (index == 2) {
+        }  if (index == 2) {
+            let buf = pins.createBuffer(3)
             buf[0] = 0x02;
             buf[1] = direction;
             buf[2] = speed;
+            // buf[3] = 0;
+            // buf[4] = 0;
             pins.i2cWriteBuffer(0x10, buf)
-        } else if (index == 3) {
+        }  
+        if (index == 3) {
+            let buf = pins.createBuffer(5)
             buf[0] = 0x00;
             buf[1] = direction;
             buf[2] = speed;
@@ -207,6 +215,10 @@ namespace DFRobotMaqueenPluss {
         }
         return -1
     }
+    /**
+     * 读电机正反转
+     */
+    
 
     /**
      * 舵机
@@ -219,11 +231,11 @@ namespace DFRobotMaqueenPluss {
             buf[0] = 0x14;
             buf[1] = angle;
             pins.i2cWriteBuffer(0x10, buf)
-        } else if (index == 2) {
+        }  if (index == 2) {
             buf[0] = 0x15;
             buf[1] = angle;
             pins.i2cWriteBuffer(0x10, buf)
-        } else if (index == 3) {
+        }  if (index == 3) {
             buf[0] = 0x16;
             buf[1] = angle;
             pins.i2cWriteBuffer(0x10, buf)
@@ -240,11 +252,11 @@ namespace DFRobotMaqueenPluss {
             buf[0] = 0x0B
             buf[1] = color
             pins.i2cWriteBuffer(0x10, buf)
-        } else if (rgb == 2) {
+        } if (rgb == 2) {
             buf[0] = 0x0C
             buf[1] = color
             pins.i2cWriteBuffer(0x10, buf)
-        } else if (rgb == 3) {
+        } if (rgb == 3) {
             buf[0] = 0x0B
             buf[1] = color
             buf[2] = color
@@ -262,11 +274,11 @@ namespace DFRobotMaqueenPluss {
         let y = pins.i2cReadBuffer(0x10, 4);
         if (patrol == 1) {
             return y[1]
-        } else if (patrol == 2) {
+        } if (patrol == 2) {
             return y[0]
-        } else if (patrol == 3) {
+        }  if (patrol == 3) {
             return y[2]
-        } else if (patrol == 4) {
+        } if (patrol == 4) {
             return y[3]
         }
         return -1
@@ -281,11 +293,11 @@ namespace DFRobotMaqueenPluss {
         let y = pins.i2cReadBuffer(0x10, 4);
         if (patrol == 1) {
             return y[1]
-        } else if (patrol == 2) {
+        } if (patrol == 2) {
             return y[0]
-        } else if (patrol == 3) {
+        }  if (patrol == 3) {
             return y[2]
-        } else if (patrol == 4) {
+        }  if (patrol == 4) {
             return y[3]
         }
         return -1
