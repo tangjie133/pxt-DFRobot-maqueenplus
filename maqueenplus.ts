@@ -204,21 +204,29 @@ namespace DFRobotMaqueenPluss {
     export function ReadSpeed(index: Motors1): number {
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
         let x = pins.i2cReadBuffer(0x10, 4)
-        let y
         if (index == 1) {
-            y = x[1];
-            return y
+            return x[1]
 
         } else if (index == 2) {
-            y = x[3];
-            return y
+            return x[3]
         }
         return -1
     }
     /**
      * 读电机正反转
      */
-    
+    //%block="read Motor|%index direction"
+    export function ReadDirection(index: Motors1): number {
+        pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
+        let x = pins.i2cReadBuffer(0x10, 4)
+        if (index == 1) {
+            return x[0] 
+
+        } else if (index == 2) {
+            return x[2]
+        }
+        return -1
+    }
 
     /**
      * 舵机
