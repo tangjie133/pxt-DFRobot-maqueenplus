@@ -9,10 +9,10 @@ enum PIN {
     P1 = 2,
     P2 = 1,
     P8 = 18,
-    P9 = 10,
-    P10 = 6,
+    //P9 = 10,
+    // P10 = 6,
     P13 = 23,
-    P14 = 22,
+    // P14 = 22,
     P15 = 21,
 };
 /**
@@ -335,10 +335,10 @@ namespace DFRobotMaqueenPluss {
             case PIN.P1: _T = DigitalPin.P1; break;
             case PIN.P2: _T = DigitalPin.P2; break;
             case PIN.P8: _T = DigitalPin.P8; break;
-            case PIN.P9: _T = DigitalPin.P9; break;
-            case PIN.P10: _T = DigitalPin.P10; break;
+            //case PIN.P9: _T = DigitalPin.P9; break;
+            // case PIN.P10: _T = DigitalPin.P10; break;
             case PIN.P13: _T = DigitalPin.P13; break;
-            case PIN.P14: _T = DigitalPin.P14; break;
+            // case PIN.P14: _T = DigitalPin.P14; break;
             case PIN.P15: _T = DigitalPin.P15; break;
             default: _T = DigitalPin.P0; break;
         }
@@ -348,10 +348,10 @@ namespace DFRobotMaqueenPluss {
             case PIN.P1: _E = DigitalPin.P1; break;
             case PIN.P2: _E = DigitalPin.P2; break;
             case PIN.P8: _E = DigitalPin.P8; break;
-            case PIN.P9: _E = DigitalPin.P9; break;
-            case PIN.P10: _E = DigitalPin.P10; break;
+            //case PIN.P9: _E = DigitalPin.P9; break;
+            // case PIN.P10: _E = DigitalPin.P10; break;
             case PIN.P13: _E = DigitalPin.P13; break;
-            case PIN.P14: _E = DigitalPin.P14; break;
+            // case PIN.P14: _E = DigitalPin.P14; break;
             case PIN.P15: _E = DigitalPin.P15; break;
             default: _E = DigitalPin.P0; break;
         }
@@ -365,7 +365,7 @@ namespace DFRobotMaqueenPluss {
         pins.setPull(_E, PinPullMode.PullUp);
         let d = pins.pulseIn(_E, PulseValue.High, maxCmDistance * 42);
         console.log("DISTANCE:" + d / 42);
-        basic.pause(50);
+        basic.pause(60);
         let x = Math.round(d / 42);
         let y = Math.round(d / 1);
 
