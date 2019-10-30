@@ -124,7 +124,7 @@ enum Color {
 
 }
 
-//% weight=100  color=#00A654   block="Maqueen+"
+//% weight=100  color=#00A654   block="Maqueen+" icon="\uf136"
 namespace DFRobotMaqueenPluss {
 
     export class Packeta {
