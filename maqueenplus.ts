@@ -19,18 +19,18 @@ enum PIN {
 * 电机
 */
 enum Motors {
-    //% block="M1"
+    //% block="left"
     M1 = 1,
-    //% block="M2"
+    //% block="right"
     M2 = 2,
     //% block="ALL"
     ALL = 3
 }
 
 enum Motors1 {
-    //% block="M1"
+    //% block="left"
     M1 = 1,
-    //% block="M2"
+    //% block="right"
     M2 = 2,
 }
 
@@ -145,7 +145,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 控制电机运行
      */
-    //% block="Motor|%index|dir|%direction|speed|%speed "
+    //% block="Motor|%index|direction|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function MototRun(index: Motors, direction: Dir, speed: number): void {
        
@@ -276,7 +276,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 寻线传感器
      */
-    //%block="read patrol|%patrol"
+    //%block="read patrol sensor|%patrol"
     export function ReadPatrol(patrol: Patrol): number {
         pins.i2cWriteNumber(0x10, 0x19, NumberFormat.Int8LE);
         let y = pins.i2cReadBuffer(0x10, 4);
@@ -295,7 +295,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 读取巡线传感器电压
      */
-    //% block="read patrol|%patrol voltage "
+    //% block="read patrol sensor|%patrol voltage "
     export function ReadPatrolVoltage(patrol: Patrol): number {
         pins.i2cWriteNumber(0x10, 0x1E, NumberFormat.Int8LE);
         let y = pins.i2cReadBuffer(0x10, 4);
@@ -325,7 +325,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 超声波
      */
-    //%block="ultrasonic T|%T E|%E |%sonic"
+    //%block="read ultrasonic sensor T|%T E|%E |%sonic"
     export function UltraSonic(T: PIN, E: PIN, sonic: Sonicunit): number {
         let maxCmDistance = 500;
         let _T;

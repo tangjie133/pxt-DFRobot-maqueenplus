@@ -14,7 +14,7 @@
         "maqueenIR.cpp",
         "ReceiverIR.cpp",
         "ReceiverIR.h",
-		"_locales/zh/Maqueenpluss-strings.json",
+        "_locales/zh/Maqueenpluss-strings.json",
         "RemoteIR.h",
         "shims.d.ts"
     ],
@@ -22,5 +22,5 @@
     "testFiles": [
         "test.ts"
     ],
-    "installedVersion": "workspace:7449ab78-b7b8-4335-8167-0c662655d489"
+    "installedVersion": "workspace:1a1abf44-d13d-4ccc-81ce-131abc725ef0"
 }
