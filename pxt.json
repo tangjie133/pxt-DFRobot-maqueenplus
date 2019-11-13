@@ -14,6 +14,7 @@
         "maqueenIR.cpp",
         "ReceiverIR.cpp",
         "ReceiverIR.h",
+		"_locales/zh/Maqueenpluss-strings.json",
         "RemoteIR.h",
         "shims.d.ts"
     ],
