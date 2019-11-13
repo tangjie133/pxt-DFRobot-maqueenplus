@@ -355,24 +355,28 @@ namespace DFRobotMaqueenPluss {
             case PIN.P15: _E = DigitalPin.P15; break;
             default: _E = DigitalPin.P0; break;
         }
-        pins.setPull(_T, PinPullMode.PullNone);
+      
+        let d;
         pins.digitalWritePin(_T, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(_T, 1);
-        control.waitMicros(10);
-        pins.digitalWritePin(_T, 0);
-
-        pins.setPull(_E, PinPullMode.PullUp);
-        let d = pins.pulseIn(_E, PulseValue.High, maxCmDistance * 42);
-        console.log("DISTANCE:" + d / 42);
-        basic.pause(60);
-        let x = Math.round(d / 42);
-        let y = Math.round(d / 1);
-
-        switch (sonic) {
-            case Sonicunit.Centimeters: return x
-            default: return y
+        if (pins.digitalReadPin(_E) == 0) {
+            pins.digitalWritePin(_T, 1);
+            pins.digitalWritePin(_T, 0);
+            d = pins.pulseIn(_E, PulseValue.High, maxCmDistance * 58);
+        } else {
+            pins.digitalWritePin(_T, 0);
+            pins.digitalWritePin(_T, 1);
+            d = pins.pulseIn(_E, PulseValue.Low, maxCmDistance * 58);
         }
+        let x = d / 59;
+        if (x <= 0 || x > 500) {
+            return 0;
+        }
+        switch (sonic) {
+            case Sonicunit.Centimeters: return Math.round(x);
+            default: return Math.idiv(d, 2.54);
+        }
+
+
     }
     /**
      * 紅外 infra-red sensor
