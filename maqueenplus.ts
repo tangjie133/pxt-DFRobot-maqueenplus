@@ -1,3 +1,18 @@
+
+/** 
+ * @file pxt-dfrobot_maqueenplus/maqueenplus.ts
+ * @brief DFRobot's maqueen makecode library.
+ * @n [Get the module here](https://)
+ * @n This is a MakeCode graphical programming education robot.
+ * 
+ * @copyright    [DFRobot](http://www.dfrobot.com), 2016
+ * @copyright    MIT Lesser General Public License
+ * 
+ * @author [email](jie.tang@dfrobot.com)
+ * @version  V0.0.1
+ * @date  2019-11-19
+*/
+
 let maqueene = "1"
 let maqueenparam = 0
 let alreadyInit = 0
@@ -126,7 +141,7 @@ enum Color {
 
 }
 
-//% weight=100  color=#00A654   block="Maqueen+" icon="\uf136"
+//% weight=100  color=#00A654   block="Maqueenplus" icon="\uf136"
 namespace DFRobotMaqueenPluss {
 
     export class Packeta {

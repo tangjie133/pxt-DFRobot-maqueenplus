@@ -1,5 +1,5 @@
 {
-    "name": "Maqueenpluss",
+    "name": "Maqueenplus",
     "dependencies": {
         "core": "*",
         "radio": "*"
@@ -14,7 +14,7 @@
         "maqueenIR.cpp",
         "ReceiverIR.cpp",
         "ReceiverIR.h",
-        "_locales/zh/Maqueenpluss-strings.json",
+        "_locales/zh/Maqueenplus-strings.json",
         "RemoteIR.h",
         "shims.d.ts"
     ],
