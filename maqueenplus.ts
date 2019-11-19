@@ -297,22 +297,22 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * 读取巡线传感器电压
+     * 读取巡线传感器灰度值
      */
     //% block="read patrol sensor|%patrol voltage "
     export function ReadPatrolVoltage(patrol: Patrol): number {
         pins.i2cWriteNumber(0x10, 0x1E, NumberFormat.Int8LE);
-        let y = pins.i2cReadBuffer(0x10, 5);
+        let y = pins.i2cReadBuffer(0x10, 10);
         if (patrol == 1) {
-            return y[1];
+            return y[3]|y[2]<<8;
         } if (patrol == 2) {
-            return y[0];
+            return y[1]|y[0]<<8;
         } if (patrol == 3) {
-            return y[2];
+            return y[5]|y[4]<<8;
         } if (patrol == 4) {
-            return y[3];
+            return y[7]|y[6]<<8;
         } if (patrol == 5) {
-            return y[4];
+            return y[9]|y[8]<<8;
         }
         return -1;
     }
