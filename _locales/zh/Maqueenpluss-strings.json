@@ -19,7 +19,7 @@
     "DFRobotMaqueenPluss.ServoRun|block":"舵机|%index角度|%angle",
     "DFRobotMaqueenPluss.SetRGBLight|block":"设置|%rgbshow颜色|%color",
     "DFRobotMaqueenPluss.ReadPatrol|block":"读巡线传感器|%patrol",
-    "DFRobotMaqueenPluss.ReadPatrolVoltage|block":"读巡线传感器|%patrol电压",
+    "DFRobotMaqueenPluss.ReadPatrolVoltage|block":"读巡线传感器|%patrol灰度值",
     "DFRobotMaqueenPluss.ReadVersion|block":"获取版本号",
     "DFRobotMaqueenPluss.UltraSonic|block":"读超声波传感器T|%T E|%E |%sonic",
     "DFRobotMaqueenPluss.IR_read|block":"读红外",
