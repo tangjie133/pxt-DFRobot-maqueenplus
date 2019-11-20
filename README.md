@@ -1,30 +1,77 @@
-# pxt-dfrobot_maqueenpluss
+  
+# Maqueen+
 
+This is a MakeCode graphical programming education robot.
 
+Author: tangjie  
+Date:   2019.October  
+  
 
-## Usage
+## Add extension
 
-This repository contains a MakeCode extension. To use it in MakeCode,
+open your microbit makecode project, in Extension, paste  
+(https://github.com/DFRobot/pxt-maqueen)
+to search box then search.
+Get the module here  
+(https://www.dfrobot.com.cn/goods-1802.html)
+## Basic usage
 
-* open https://makecode.microbit.org/
-* click on **New Project**
-* click on **Extensions** under the gearwheel menu
-* search for the URL of this repository
+* Set the motion direction and speed of Maqueen motor
 
-## Collaborators
+```blocks
+DFRobotMaqueenPluss.MototRun(Motors.M1, Dir.CW, 120)
+```
 
-You can invite users to become collaborators to this repository. This will allow multiple users to work on the same project at the same time.
-[Learn more...](https://help.github.com/en/articles/inviting-collaborators-to-a-personal-repository)
+* Read the Maqueen ultrasound data
 
-To edit this repository in MakeCode,
+```blocks
+basic.showNumber(Maqueen.Ultrasonic(PingUnit.Centimeters))
+```
 
-* open https://makecode.microbit.org/
-* click on **Import** then click on **Import URL**
-* paste the repository URL and click import
+* Set the  Maqueen servos 
+
+```blocks
+Maqueen.ServoRun(Maqueen.Servos.S1, 90)
+```
+
+* Set the  Maqueen  motor stop
+
+```blocks
+Maqueen.MotorStop(Maqueen.Motors.M1)
+```
+
+* Read patrol sensor data
+
+```blocks
+basic.showNumber(Maqueen.ReadPatrol(Maqueen.Patrol.PatrolLeft))
+```
+
+* Set LED light switch
+
+```blocks
+Maqueen.WriteLED(Maqueen.LED.LEDLeft, Maqueen.LEDswitch.turnOn)
+```
+
+* Read IR sensor data
+
+```blocks
+basic.showNumber(Maqueen.IR_read())
+```
+
+* Read the version number
+
+```blocks
+basic.showString(Maqueen.IR_read_version())
+```
+
+## License
+
+MIT
+
+Copyright (c) 2018, microbit/micropython Chinese community  
+
 
 ## Supported targets
 
 * for PXT/microbit
-* for PXT/microbit
 (The metadata above is needed for package search.)
-

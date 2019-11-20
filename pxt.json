@@ -14,13 +14,12 @@
         "maqueenIR.cpp",
         "ReceiverIR.cpp",
         "ReceiverIR.h",
-        "_locales/zh/Maqueenplus-strings.json",
         "RemoteIR.h",
-        "shims.d.ts"
+        "shims.d.ts",
+        "_locales/zh/Maqueenplus-strings.json"
     ],
     "preferredEditor": "tsprj",
     "testFiles": [
         "test.ts"
-    ],
-    "installedVersion": "workspace:1a1abf44-d13d-4ccc-81ce-131abc725ef0"
+    ]
 }
