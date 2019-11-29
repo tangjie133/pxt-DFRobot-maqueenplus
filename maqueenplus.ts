@@ -9,7 +9,7 @@
  * @copyright    MIT Lesser General Public License
  * 
  * @author [email](jie.tang@dfrobot.com)
- * @version  V0.0.4
+ * @version  V0.0.5
  * @date  2019-11-19
 */
 
@@ -258,7 +258,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * 读电机正反转
      */
-    //%block="read Motor|%index direction(start:1,stop:0,back:2)"
+    //%block="read Motor|%index direction(stop:0,forward:1,back:2)"
     export function ReadDirection(index: Motors1): number {
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
         let x = pins.i2cReadBuffer(0x10, 4)
