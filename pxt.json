@@ -1,5 +1,5 @@
 {
-    "name": "Maqueenplus",
+    "name": "MaqueenPlus",
     "dependencies": {
         "core": "*",
         "radio": "*"
@@ -16,7 +16,7 @@
         "ReceiverIR.h",
         "RemoteIR.h",
         "shims.d.ts",
-        "_locales/zh/Maqueenplus-strings.json"
+        "_locales/zh/MaqueenPlus-strings.json"
     ],
     "preferredEditor": "tsprj",
     "testFiles": [
