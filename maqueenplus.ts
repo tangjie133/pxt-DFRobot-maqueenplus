@@ -49,6 +49,7 @@ enum Motors1 {
     M2 = 2,
 }
 
+
 /**
  * 正反转
  */
@@ -189,9 +190,38 @@ namespace DFRobotMaqueenPluss {
             buf[4] = speed;
             pins.i2cWriteBuffer(0x10, buf)
         }
-
-
     }
+    /**
+    * 控制电机停止
+    */
+    //% block="Motor|%index stop"
+    export function MototStop(index: Motors): void {
+
+        if (index == 1) {
+            let buf = pins.createBuffer(3)
+            buf[0] = 0x00;
+            buf[1] = 0;
+            buf[2] = 0;
+            pins.i2cWriteBuffer(0x10, buf)
+
+        } if (index == 2) {
+            let buf = pins.createBuffer(3)
+            buf[0] = 0x02;
+            buf[1] = 0;
+            buf[2] = 0;
+            pins.i2cWriteBuffer(0x10, buf)
+        }
+        if (index == 3) {
+            let buf = pins.createBuffer(5)
+            buf[0] = 0x00;
+            buf[1] = 0;
+            buf[2] = 0;
+            buf[3] = 0;
+            buf[4] = 0;
+            pins.i2cWriteBuffer(0x10, buf)
+        }
+    }
+
 
     /**
      * 电机补偿
