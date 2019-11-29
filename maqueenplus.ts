@@ -9,7 +9,7 @@
  * @copyright    MIT Lesser General Public License
  * 
  * @author [email](jie.tang@dfrobot.com)
- * @version  V0.0.5
+ * @version  V0.0.6
  * @date  2019-11-19
 */
 
@@ -278,19 +278,6 @@ namespace DFRobotMaqueenPluss {
     //% angle.min=0  angle.max=180
     export function ServoRun(index: Servos, angle: number): void {
         let buf = pins.createBuffer(2)
-        // if (index == 1) {
-        //     buf[0] = 0x14;
-        //     buf[1] = angle;
-        //     pins.i2cWriteBuffer(0x10, buf)
-        // } if (index == 2) {
-        //     buf[0] = 0x15;
-        //     buf[1] = angle;
-        //     pins.i2cWriteBuffer(0x10, buf)
-        // } if (index == 3) {
-        //     buf[0] = 0x16;
-        //     buf[1] = angle;
-        //     pins.i2cWriteBuffer(0x10, buf)
-        // }
         switch (index) {
             case 1:
                 buf[0] = 0x14;
@@ -314,27 +301,24 @@ namespace DFRobotMaqueenPluss {
      * RGB灯
      */
     //% block="set |%rgbshow color|%color"
-    export function SetRGBLight(rgb: RGBLight, color: Color): void {
-        let buf = pins.createBuffer(3)
-        switch (rgb) {
-            case 1:
-                buf[0] = 0x0B;
-                buf[1] = color;
-                pins.i2cWriteBuffer(0x10, buf);
-                break;
-
-            case 2:
-                buf[0] = 0x0C;
-                buf[1] = color;
-                pins.i2cWriteBuffer(0x10, buf);
-                break;
-
-            default:
-                buf[0] = 0x0B;
-                buf[1] = color;
-                buf[2] = color;
-                pins.i2cWriteBuffer(0x10, buf);
-                break;
+    export function SetRGBLight(rgbshow: RGBLight, color: Color): void {
+        
+        if (rgbshow == 1) {
+            let buf = pins.createBuffer(2)
+            buf[0] = 0x0B;
+            buf[1] = color;
+            pins.i2cWriteBuffer(0x10, buf);
+        } if (rgbshow == 2) {
+            let buf = pins.createBuffer(2)
+            buf[0] = 0x0C;
+            buf[1] = color;
+            pins.i2cWriteBuffer(0x10, buf);
+        } if (rgbshow == 3) {
+            let buf = pins.createBuffer(3)
+            buf[0] = 0x0B;
+            buf[1] = color;
+            buf[2] = color;
+            pins.i2cWriteBuffer(0x10, buf);
         }
 
     }
@@ -366,17 +350,6 @@ namespace DFRobotMaqueenPluss {
         pins.i2cWriteNumber(0x10, 0x1E, NumberFormat.Int8LE);
         let y = pins.i2cReadBuffer(0x10, 10);
         let patrol_AD: number;
-        // if (patrol == 1) {
-        //     return y[3] | y[2] << 8;
-        // } if (patrol == 2) {
-        //     return y[1] | y[0] << 8;
-        // } if (patrol == 3) {
-        //     return y[5] | y[4] << 8;
-        // } if (patrol == 4) {
-        //     return y[7] | y[6] << 8;
-        // } if (patrol == 5) {
-        //     return y[9] | y[8] << 8;
-        // }
         switch (patrol) {
             case 1:
                 patrol_AD = y[3] | y[2] << 8;
