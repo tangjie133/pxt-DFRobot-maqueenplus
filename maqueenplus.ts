@@ -106,7 +106,7 @@ enum Patrol {
 enum Sonicunit {
     //% block="cm"
     Centimeters,
-    //% block="μs"
+    //% block="μm"
     MicroSeconds
 }
 
