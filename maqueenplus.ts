@@ -166,28 +166,29 @@ namespace DFRobotMaqueenPluss {
     //% block="Motor|%index|direction|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function MototRun(index: Motors, direction: Dir, speed: number): void {
-
+        let _speed:number;
+        _speed= Math.round(speed/1.11);
         if (index == 1) {
             let buf = pins.createBuffer(3)
             buf[0] = 0x00;
             buf[1] = direction;
-            buf[2] = speed;
+            buf[2] = _speed;
             pins.i2cWriteBuffer(0x10, buf)
 
         } if (index == 2) {
             let buf = pins.createBuffer(3)
             buf[0] = 0x02;
             buf[1] = direction;
-            buf[2] = speed;
+            buf[2] = _speed;
             pins.i2cWriteBuffer(0x10, buf)
         }
         if (index == 3) {
             let buf = pins.createBuffer(5)
             buf[0] = 0x00;
             buf[1] = direction;
-            buf[2] = speed;
+            buf[2] = _speed;
             buf[3] = direction;
-            buf[4] = speed;
+            buf[4] = _speed;
             pins.i2cWriteBuffer(0x10, buf)
         }
     }
@@ -227,7 +228,7 @@ namespace DFRobotMaqueenPluss {
      * 电机补偿
      */
     //% block="Motor Compensation|%motor speed|%speed"
-    //% speed.min=0 speed.max=255
+    //% speed.min=0 speed.max=10
     export function MostotCompensation(motor: Motors1, speed: number): void {
         let buf = pins.createBuffer(2)
         if (motor == 1) {
@@ -245,13 +246,13 @@ namespace DFRobotMaqueenPluss {
      */
     //%block="read Motor|%index speed"
     export function ReadSpeed(index: Motors1): number {
+        let _speed:number;
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
         let x = pins.i2cReadBuffer(0x10, 4)
         if (index == 1) {
-            return x[1]
-
+            return _speed=Math.round(x[1]*1.11);
         } else if (index == 2) {
-            return x[3]
+            return _speed = Math.round(x[3] * 1.11);
         }
         return -1
     }
