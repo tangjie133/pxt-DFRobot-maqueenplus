@@ -197,28 +197,29 @@ namespace DFRobotMaqueenPluss {
     //% block="Motor|%index|direction|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function mototRun(index: Motors, direction: Dir, speed: number): void {
-
+        let _speed:number;
+        _speed=Math.round(speed/1.11);
         if (index == 1) {
             let buf = pins.createBuffer(3)
             buf[0] = 0x00;
             buf[1] = direction;
-            buf[2] = speed;
+            buf[2] = _speed;
             pins.i2cWriteBuffer(0x10, buf)
 
         } if (index == 2) {
             let buf = pins.createBuffer(3)
             buf[0] = 0x02;
             buf[1] = direction;
-            buf[2] = speed;
+            buf[2] = _speed;
             pins.i2cWriteBuffer(0x10, buf)
         }
         if (index == 3) {
             let buf = pins.createBuffer(5)
             buf[0] = 0x00;
             buf[1] = direction;
-            buf[2] = speed;
+            buf[2] = _speed;
             buf[3] = direction;
-            buf[4] = speed;
+            buf[4] = _speed;
             pins.i2cWriteBuffer(0x10, buf)
         }
     }
@@ -276,15 +277,15 @@ namespace DFRobotMaqueenPluss {
      */
     //%block="read Motor|%index speed"
     export function readSpeed(index: Motors1): number {
+        let _speed:number;
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
         let speed_x = pins.i2cReadBuffer(0x10, 4)
         if (index == 1) {
-            return speed_x[1]
-
+            return Math.round(1.11 * speed_x[1]);
         } else if (index == 2) {
-            return speed_x[3]
+            return Math.round(1.11 * speed_x[3]);
         }
-        return -1
+        return -1;
     }
     /**
      * 读电机正反转
