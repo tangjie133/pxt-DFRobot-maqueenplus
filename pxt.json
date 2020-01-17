@@ -16,7 +16,9 @@
         "ReceiverIR.h",
         "RemoteIR.h",
         "shims.d.ts",
-        "_locales/zh/MaqueenPlus-strings.json"
+        "_locales/zh-cn/MaqueenPlus-strings.json",
+		 "_locales/zh-tw/MaqueenPlus-strings.json",
+		
     ],
     "preferredEditor": "tsprj",
     "testFiles": [
