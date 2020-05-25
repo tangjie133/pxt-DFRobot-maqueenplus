@@ -542,6 +542,7 @@ namespace DFRobotMaqueenPluss {
                 buf2[0] = 0x06;
                 buf2[1] = 0;
                 pins.i2cWriteBuffer(0x10, buf2);
+                break;
             default:
                 let buf3 = pins.createBuffer(4);
                 buf3[0] = 0x04;
