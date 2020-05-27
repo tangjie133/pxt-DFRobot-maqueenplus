@@ -1,7 +1,7 @@
   
 # Maqueen Plus
 
-This is a MakeCode graphical programming education robot.
+[Maqueen plus is a  STEM educational robot for micro:bit. Has been specially optimized in software and hardware  for being compatible with Huskylens AI Vision Sensor.]（）
 
 ## Basic usage
 
