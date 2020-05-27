@@ -2,7 +2,7 @@
  * @file pxt-DFRobot_Maqueenplus/maqueenplus.ts
  * @brief DFRobot's maqueenplus makecode library.
  * @n [Get the module here](https://github.com/DFRobot/pxt-DFRobot_Maqueenplus)
- * @n This is a MakeCode graphical programming education robot.
+ * @n Maqueen plus is a  STEM educational robot for micro:bit. Has been specially optimized in software and hardware  for being compatible with Huskylens AI Vision Sensor.
  * 
  * @copyright    [DFRobot](http://www.dfrobot.com), 2016
  * @copyright    MIT Lesser General Public License
@@ -127,6 +127,7 @@ namespace DFRobotMaqueenPluss {
    
     /**
      *  Init I2C 
+     * 初始化I2C直到成功
      */
     //%block="initialize via I2C until success"
     export function I2CInit():void{
@@ -158,7 +159,8 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * PID switch
+     * PID control module
+     * PID控制模块
      */
     //%block="PID switch|%pid"
     export function PID(pid: PID): void {
@@ -168,7 +170,8 @@ namespace DFRobotMaqueenPluss {
         pins.i2cWriteBuffer(0x10, buf);
     }
     /**
-     * Motor control
+     * Motor control module
+     * 电机控制模块
      */
     //% block="Motor|%index|direction|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
@@ -201,7 +204,8 @@ namespace DFRobotMaqueenPluss {
         }
     }
     /**
-     * Control the motor to stop
+     * Motor stop control module
+     * 电机停止控制模块
      */
     //% block="Motor|%index stop"
     export function mototStop(index: Motors): void {
@@ -233,7 +237,7 @@ namespace DFRobotMaqueenPluss {
 
 
     /**
-     * Motor compensation
+     * 补偿两个电机之间的速度差
      */
     //% block="Motor Compensation|%motor speed|%speed"
     //% speed.min=0 speed.max=255
@@ -251,6 +255,7 @@ namespace DFRobotMaqueenPluss {
     }
     /**
      * Reading motor speed
+     * 读取电机转动的速度
      */
     //%block="read Motor|%index speed"
     export function readSpeed(index: Motors1): number {
@@ -266,6 +271,7 @@ namespace DFRobotMaqueenPluss {
     }
     /**
      * Read motor direction
+     * 读取电机转动的方向
      */
     //%block="read Motor|%index direction(stop:0,forward:1,back:2)"
     export function readDirection(index: Motors1): number {
@@ -281,7 +287,8 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * Servo control
+     * Servo control module
+     * 舵机控制模块
      */
     //% block="servo|%index|angle|%angle"
     //% angle.min=0  angle.max=180
@@ -307,7 +314,7 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * RGB lights
+     * 模块控制RGB灯的颜色
      */
     //% block="set |%rgbshow color|%color"
     export function setRGBLight(rgbshow: RGBLight, color: Color): void {
@@ -334,6 +341,7 @@ namespace DFRobotMaqueenPluss {
 
     /**
      * Read patrol sensor
+     * 读取巡线传感器状态
      */
     //%block="read patrol sensor|%patrol"
     export function readPatrol(patrol: Patrol): number {
@@ -354,6 +362,7 @@ namespace DFRobotMaqueenPluss {
 
     /**
      * Read patrol sensor voltage
+     * 读取巡线传感器灰度值
      */
     //% block="read patrol sensor|%patrol voltage "
     export function readPatrolVoltage(patrol: Patrol): number {
@@ -385,6 +394,7 @@ namespace DFRobotMaqueenPluss {
     }
     /**
      * get product information
+     * 获取产品信息
      */
     //%block="get product information"
     export function readVersion(): string {
@@ -396,7 +406,7 @@ namespace DFRobotMaqueenPluss {
         return Version_x;
     }
     /**
-     * ultrasonic sensor
+     * 读取超声波返回的距离信息
      */
     //%block="read ultrasonic sensor T|%T E|%E cm"
     export function ultraSonic(T: PIN, E: PIN): number {
@@ -446,10 +456,6 @@ namespace DFRobotMaqueenPluss {
         if (ultraSonic_x <= 0 || ultraSonic_x > 500) {
             return 0;
         }
-        // switch (sonic) {
-        //     case Sonicunit.Centimeters: 
-        //     default: return Math.round(ultraSonic_x/2.54) //Math.idiv(ultraSonic_d, 2.54);
-        // }
         return Math.round(ultraSonic_x);
 
 
@@ -479,7 +485,7 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * on IR received
+     * 当红外接收到值时执行
      */
     //%  block="on IR received"
     export function IR_callbackUser(maqueencb: (message: number) => void) {
@@ -494,7 +500,7 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * read IR
+     * 读取红外信息
      */
     //%  block="read IR"
     export function IR_read(): number {
@@ -511,7 +517,7 @@ namespace DFRobotMaqueenPluss {
      * 读取距离
      */
     //%block="Get the number of tire turns|%motor"
-    export function readeDistance(motor:Motors1):number {
+    export function readeDistance(motor:Motors1):string {
         let distance:number;
         pins.i2cWriteNumber(0x10, 4, NumberFormat.Int8LE)
         let speed_x = pins.i2cReadBuffer(0x10, 4)
@@ -520,7 +526,7 @@ namespace DFRobotMaqueenPluss {
             default:distance = ((speed_x[2]<<8|speed_x[3])*10)/900;break;
         }
         let index=distance.toString().indexOf(".");
-        let x:number = Math.round(distance*100);
+        let x:string=distance.toString().substr(0,index+3)
         return x;
         basic.pause(30)
     }

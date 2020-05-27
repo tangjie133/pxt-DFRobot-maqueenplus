@@ -7,8 +7,6 @@
         "radio": "*"
     },
     "files": [
-        "main.blocks",
-        "main.ts",
         "README.md",
         "maqueenplus.ts",
         "enums.d.ts",
@@ -17,7 +15,8 @@
         "ReceiverIR.h",
         "RemoteIR.h",
         "shims.d.ts",
-        "_locales/zh/MaqueenPlus-strings.json"
+        "_locales/zh/MaqueenPlus-strings.json",
+        "_locales/zh-CN/README.md"
     ],
     "testFiles": [
         "test.ts"
