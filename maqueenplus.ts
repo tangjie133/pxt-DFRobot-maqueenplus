@@ -2,7 +2,7 @@
  * @file pxt-DFRobot_Maqueenplus/maqueenplus.ts
  * @brief DFRobot's maqueenplus makecode library.
  * @n [Get the module here](https://github.com/DFRobot/pxt-DFRobot_Maqueenplus)
- * @n Maqueen plus is a  STEM educational robot for micro:bit. Has been specially optimized in software and hardware  for being compatible with Huskylens AI Vision Sensor.
+ * @n Maqueen plus is a  STEM educational robot for micro:bit. Optimized with better power management and larger capacity power supply, it can be perfectly compatible with Huskylens AI Vision Sensor.
  * 
  * @copyright    [DFRobot](http://www.dfrobot.com), 2016
  * @copyright    MIT Lesser General Public License
@@ -126,8 +126,7 @@ namespace DFRobotMaqueenPluss {
     }
    
     /**
-     *  Init I2C 
-     * 初始化I2C直到成功
+     *  Init I2C until success
      */
     //%block="initialize via I2C until success"
     export function I2CInit():void{
@@ -160,7 +159,6 @@ namespace DFRobotMaqueenPluss {
 
     /**
      * PID control module
-     * PID控制模块
      */
     //%block="PID switch|%pid"
     export function PID(pid: PID): void {
@@ -171,9 +169,8 @@ namespace DFRobotMaqueenPluss {
     }
     /**
      * Motor control module
-     * 电机控制模块
      */
-    //% block="Motor|%index|direction|%direction|speed|%speed "
+    //% block="motor|%index|direction|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function mototRun(index: Motors, direction: Dir, speed: number): void {
         let _speed:number;
@@ -204,8 +201,7 @@ namespace DFRobotMaqueenPluss {
         }
     }
     /**
-     * Motor stop control module
-     * 电机停止控制模块
+     * Motor stop module
      */
     //% block="Motor|%index stop"
     export function mototStop(index: Motors): void {
@@ -237,9 +233,9 @@ namespace DFRobotMaqueenPluss {
 
 
     /**
-     * 补偿两个电机之间的速度差
+     * Compensate speed difference between two motors
      */
-    //% block="Motor Compensation|%motor speed|%speed"
+    //% block="motor compensation|%motor speed|%speed"
     //% speed.min=0 speed.max=255
     export function mostotCompensation(motor: Motors1, speed: number): void {
         let buf = pins.createBuffer(2)
@@ -254,10 +250,9 @@ namespace DFRobotMaqueenPluss {
         }
     }
     /**
-     * Reading motor speed
-     * 读取电机转动的速度
+     * Read motor speed
      */
-    //%block="read Motor|%index speed"
+    //%block="read motor|%index speed"
     export function readSpeed(index: Motors1): number {
         let _speed:number;
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
@@ -271,9 +266,8 @@ namespace DFRobotMaqueenPluss {
     }
     /**
      * Read motor direction
-     * 读取电机转动的方向
      */
-    //%block="read Motor|%index direction(stop:0,forward:1,back:2)"
+    //%block="read motor|%index direction(stop:0,forward:1,back:2)"
     export function readDirection(index: Motors1): number {
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
         let dir_x = pins.i2cReadBuffer(0x10, 4)
@@ -288,7 +282,6 @@ namespace DFRobotMaqueenPluss {
 
     /**
      * Servo control module
-     * 舵机控制模块
      */
     //% block="servo|%index|angle|%angle"
     //% angle.min=0  angle.max=180
@@ -314,7 +307,7 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * 模块控制RGB灯的颜色
+     * Control the color of RGB LED 
      */
     //% block="set |%rgbshow color|%color"
     export function setRGBLight(rgbshow: RGBLight, color: Color): void {
@@ -340,10 +333,9 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * Read patrol sensor
-     * 读取巡线传感器状态
+     * Read line-tracking sensor status
      */
-    //%block="read patrol sensor|%patrol"
+    //%block="read line-tracking sensor|%patrol"
     export function readPatrol(patrol: Patrol): number {
         pins.i2cWriteNumber(0x10, 0x1D, NumberFormat.Int8LE);
         let patrol_y = pins.i2cReadBuffer(0x10, 1);
@@ -361,10 +353,9 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * Read patrol sensor voltage
-     * 读取巡线传感器灰度值
+     * Read grayscale value of line-tracking sensor
      */
-    //% block="read patrol sensor|%patrol voltage "
+    //% block="read line-tracking sensor|%patrol grayscale "
     export function readPatrolVoltage(patrol: Patrol): number {
         pins.i2cWriteNumber(0x10, 0x1E, NumberFormat.Int8LE);
         let patrolv_y = pins.i2cReadBuffer(0x10, 12);
@@ -393,8 +384,7 @@ namespace DFRobotMaqueenPluss {
         return patrol_AD;
     }
     /**
-     * get product information
-     * 获取产品信息
+     * Get product information
      */
     //%block="get product information"
     export function readVersion(): string {
@@ -406,7 +396,7 @@ namespace DFRobotMaqueenPluss {
         return Version_x;
     }
     /**
-     * 读取超声波返回的距离信息
+     * Read the distance value the ultrasound returns 
      */
     //%block="read ultrasonic sensor T|%T E|%E cm"
     export function ultraSonic(T: PIN, E: PIN): number {
@@ -485,7 +475,7 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * 当红外接收到值时执行
+     * Run when received IR signal
      */
     //%  block="on IR received"
     export function IR_callbackUser(maqueencb: (message: number) => void) {
@@ -500,7 +490,7 @@ namespace DFRobotMaqueenPluss {
     }
 
     /**
-     * 读取红外信息
+     * Read the IR information 
      */
     //%  block="read IR"
     export function IR_read(): number {
@@ -513,49 +503,49 @@ namespace DFRobotMaqueenPluss {
         IrPressEvent += 1;
         onPressEvent(IrPressEvent, maqueencb);
     }
-    /**
-     * 读取距离
-     */
-    //%block="Get the number of tire turns|%motor"
-    export function readeDistance(motor:Motors1):string {
-        let distance:number;
-        pins.i2cWriteNumber(0x10, 4, NumberFormat.Int8LE)
-        let speed_x = pins.i2cReadBuffer(0x10, 4)
-        switch(motor){
-            case 1:distance = ((speed_x[0]<<8|speed_x[1])*10)/900;break;
-            default:distance = ((speed_x[2]<<8|speed_x[3])*10)/900;break;
-        }
-        let index=distance.toString().indexOf(".");
-        let x:string=distance.toString().substr(0,index+3)
-        return x;
-        basic.pause(30)
-    }
-    /**
-     * 清除距离
-     */
-    //%block="Clear the number of turns of the tire|%motor"
-    export function clearDistance(motor:Motors):void{
+    // /**
+    //  * Read distance information 
+    //  */
+    // //%block="get the revolution of |%motor wheel"
+    // export function readeDistance(motor:Motors1):string {
+    //     let distance:number;
+    //     pins.i2cWriteNumber(0x10, 4, NumberFormat.Int8LE)
+    //     let speed_x = pins.i2cReadBuffer(0x10, 4)
+    //     switch(motor){
+    //         case 1:distance = ((speed_x[0]<<8|speed_x[1])*10)/900;break;
+    //         default:distance = ((speed_x[2]<<8|speed_x[3])*10)/900;break;
+    //     }
+    //     let index=distance.toString().indexOf(".");
+    //     let x:string=distance.toString().substr(0,index+3)
+    //     return x;
+    //     basic.pause(30)
+    // }
+    // /**
+    //  * Clear distance information 
+    //  */
+    // //%block="clear the revolutions of |%motor wheel" 
+    // export function clearDistance(motor:Motors):void{
         
-        switch(motor){
-            case 1: 
-                let buf1 = pins.createBuffer(2);
-                buf1[0] = 0x04;
-                buf1[1] = 0;
-                pins.i2cWriteBuffer(0x10, buf1);
-                break;
-            case 2:
-                let buf2 = pins.createBuffer(2);
-                buf2[0] = 0x06;
-                buf2[1] = 0;
-                pins.i2cWriteBuffer(0x10, buf2);
-                break;
-            default:
-                let buf3 = pins.createBuffer(4);
-                buf3[0] = 0x04;
-                buf3[1] = 0;
-                buf3[2] = 0;
-                buf3[3] = 0;
-                pins.i2cWriteBuffer(0x10, buf3);
-        }
-    }
+    //     switch(motor){
+    //         case 1: 
+    //             let buf1 = pins.createBuffer(2);
+    //             buf1[0] = 0x04;
+    //             buf1[1] = 0;
+    //             pins.i2cWriteBuffer(0x10, buf1);
+    //             break;
+    //         case 2:
+    //             let buf2 = pins.createBuffer(2);
+    //             buf2[0] = 0x06;
+    //             buf2[1] = 0;
+    //             pins.i2cWriteBuffer(0x10, buf2);
+    //             break;
+    //         default:
+    //             let buf3 = pins.createBuffer(4);
+    //             buf3[0] = 0x04;
+    //             buf3[1] = 0;
+    //             buf3[2] = 0;
+    //             buf3[3] = 0;
+    //             pins.i2cWriteBuffer(0x10, buf3);
+    //     }
+    // }
 }
