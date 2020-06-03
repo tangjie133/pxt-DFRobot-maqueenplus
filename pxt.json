@@ -15,8 +15,7 @@
         "ReceiverIR.h",
         "RemoteIR.h",
         "shims.d.ts",
-        "_locales/zh/MaqueenPlus-strings.json",
-        "_locales/zh-CN/README.md"
+        "_locales/zh/MaqueenPlus-strings.json"
     ],
     "testFiles": [
         "test.ts"
