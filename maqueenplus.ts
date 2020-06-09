@@ -503,49 +503,49 @@ namespace DFRobotMaqueenPluss {
         IrPressEvent += 1;
         onPressEvent(IrPressEvent, maqueencb);
     }
-    // /**
-    //  * Read distance information 
-    //  */
-    // //%block="get the revolution of |%motor wheel"
-    // export function readeDistance(motor:Motors1):string {
-    //     let distance:number;
-    //     pins.i2cWriteNumber(0x10, 4, NumberFormat.Int8LE)
-    //     let speed_x = pins.i2cReadBuffer(0x10, 4)
-    //     switch(motor){
-    //         case 1:distance = ((speed_x[0]<<8|speed_x[1])*10)/900;break;
-    //         default:distance = ((speed_x[2]<<8|speed_x[3])*10)/900;break;
-    //     }
-    //     let index=distance.toString().indexOf(".");
-    //     let x:string=distance.toString().substr(0,index+3)
-    //     return x;
-    //     basic.pause(30)
-    // }
-    // /**
-    //  * Clear distance information 
-    //  */
-    // //%block="clear the revolutions of |%motor wheel" 
-    // export function clearDistance(motor:Motors):void{
+    /**
+     * get the revolutions of wheel
+     */
+    //%block="get the revolutions of wheel %motor"
+    export function readeDistance(motor:Motors1):string {
+        let distance:number;
+        pins.i2cWriteNumber(0x10, 4, NumberFormat.Int8LE)
+        let speed_x = pins.i2cReadBuffer(0x10, 4)
+        switch(motor){
+            case 1:distance = ((speed_x[0]<<8|speed_x[1])*10)/900;break;
+            default:distance = ((speed_x[2]<<8|speed_x[3])*10)/900;break;
+        }
+        let index=distance.toString().indexOf(".");
+        let x:string=distance.toString().substr(0,index+3)
+        return x;
+        basic.pause(30)
+    }
+    /**
+     * clear the revolutions of wheel 
+     */
+    //%block="clear the revolutions of wheel %motor" 
+    export function clearDistance(motor:Motors):void{
         
-    //     switch(motor){
-    //         case 1: 
-    //             let buf1 = pins.createBuffer(2);
-    //             buf1[0] = 0x04;
-    //             buf1[1] = 0;
-    //             pins.i2cWriteBuffer(0x10, buf1);
-    //             break;
-    //         case 2:
-    //             let buf2 = pins.createBuffer(2);
-    //             buf2[0] = 0x06;
-    //             buf2[1] = 0;
-    //             pins.i2cWriteBuffer(0x10, buf2);
-    //             break;
-    //         default:
-    //             let buf3 = pins.createBuffer(4);
-    //             buf3[0] = 0x04;
-    //             buf3[1] = 0;
-    //             buf3[2] = 0;
-    //             buf3[3] = 0;
-    //             pins.i2cWriteBuffer(0x10, buf3);
-    //     }
-    // }
+        switch(motor){
+            case 1: 
+                let buf1 = pins.createBuffer(2);
+                buf1[0] = 0x04;
+                buf1[1] = 0;
+                pins.i2cWriteBuffer(0x10, buf1);
+                break;
+            case 2:
+                let buf2 = pins.createBuffer(2);
+                buf2[0] = 0x06;
+                buf2[1] = 0;
+                pins.i2cWriteBuffer(0x10, buf2);
+                break;
+            default:
+                let buf3 = pins.createBuffer(4);
+                buf3[0] = 0x04;
+                buf3[1] = 0;
+                buf3[2] = 0;
+                buf3[3] = 0;
+                pins.i2cWriteBuffer(0x10, buf3);
+        }
+    }
 }
