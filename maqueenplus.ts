@@ -128,6 +128,7 @@ namespace DFRobotMaqueenPluss {
     /**
      *  Init I2C until success
      */
+    //% weight=100
     //%block="initialize via I2C until success"
     export function I2CInit():void{
         let Version_v = 0;
@@ -160,6 +161,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * PID control module
      */
+    //% weight=90
     //%block="PID switch|%pid"
     export function PID(pid: PID): void {
         let buf = pins.createBuffer(2);
@@ -170,6 +172,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Motor control module
      */
+    //% weight=80
     //% block="motor|%index|direction|%direction|speed|%speed "
     //% speed.min=0 speed.max=255
     export function mototRun(index: Motors, direction: Dir, speed: number): void {
@@ -203,6 +206,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Motor stop module
      */
+    //% weight=75
     //% block="Motor|%index stop"
     export function mototStop(index: Motors): void {
 
@@ -235,6 +239,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Compensate speed difference between two motors
      */
+    //% weight=7
     //% block="motor compensation|%motor speed|%speed"
     //% speed.min=0 speed.max=255
     export function mostotCompensation(motor: Motors1, speed: number): void {
@@ -252,6 +257,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Read motor speed
      */
+    //% weight=65
     //%block="read motor|%index speed"
     export function readSpeed(index: Motors1): number {
         let _speed:number;
@@ -267,6 +273,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Read motor direction
      */
+    //% weight=61
     //%block="read motor|%index direction(stop:0,forward:1,back:2)"
     export function readDirection(index: Motors1): number {
         pins.i2cWriteNumber(0x10, 0, NumberFormat.Int8LE)
@@ -283,6 +290,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Servo control module
      */
+    //% weight=40
     //% block="servo|%index|angle|%angle"
     //% angle.min=0  angle.max=180
     export function servoRun(index: Servos, angle: number): void {
@@ -309,6 +317,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Control the color of RGB LED 
      */
+    //% weight=50
     //% block="set |%rgbshow color|%color"
     export function setRGBLight(rgbshow: RGBLight, color: Color): void {
 
@@ -335,6 +344,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Read line-tracking sensor status
      */
+    //% weight=56
     //%block="read line-tracking sensor|%patrol"
     export function readPatrol(patrol: Patrol): number {
         pins.i2cWriteNumber(0x10, 0x1D, NumberFormat.Int8LE);
@@ -355,6 +365,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Read grayscale value of line-tracking sensor
      */
+    //% weight=55
     //% block="read line-tracking sensor|%patrol grayscale "
     export function readPatrolVoltage(patrol: Patrol): number {
         pins.i2cWriteNumber(0x10, 0x1E, NumberFormat.Int8LE);
@@ -386,6 +397,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Get product information
      */
+    //% weight=5
     //%block="get product information"
     export function readVersion(): string {
         pins.i2cWriteNumber(0x10, 0x32, NumberFormat.Int8LE);
@@ -398,6 +410,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Read the distance value the ultrasound returns 
      */
+    //% weight=20
     //%block="read ultrasonic sensor T|%T E|%E cm"
     export function ultraSonic(T: PIN, E: PIN): number {
         let maxCmDistance = 500;
@@ -477,6 +490,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Run when received IR signal
      */
+    //% weight=10
     //%  block="on IR received"
     export function IR_callbackUser(maqueencb: (message: number) => void) {
         maqueenInit();
@@ -492,6 +506,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * Read the IR information 
      */
+    //% weight=15
     //%  block="read IR"
     export function IR_read(): number {
         maqueenInit();
@@ -506,6 +521,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * get the revolutions of wheel
      */
+    //% weight=60
     //%block="get the revolutions of wheel %motor"
     export function readeDistance(motor:Motors1):string {
         let distance:number;
@@ -523,6 +539,7 @@ namespace DFRobotMaqueenPluss {
     /**
      * clear the revolutions of wheel 
      */
+    //% weight=60
     //%block="clear the revolutions of wheel %motor" 
     export function clearDistance(motor:Motors):void{
         
