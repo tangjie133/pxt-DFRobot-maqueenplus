@@ -26,6 +26,6 @@
     "DFRobotMaqueenPluss.IR_callbackUser|block": "当红外接收到",
     "DFRobotMaqueenPluss.mototStop|block":"电机|%index停止",
     "DFRobotMaqueenPluss.I2CInit|block":"I2C初始化直到成功",
-    "DFRobotMaqueenPluss.clearDistance|block":"清除轮胎圈数 %motor",
-    "DFRobotMaqueenPluss.readeDistance|block":"获取轮胎圈数 %motor"
+    "DFRobotMaqueenPluss.clearDistance|block":"清除车轮圈数 %motor",
+    "DFRobotMaqueenPluss.readeDistance|block":"获取车轮圈数 %motor"
 }
